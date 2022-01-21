@@ -1,0 +1,22 @@
+version: "2.1"
+
+networks:
+  thesis:
+
+services:
+  api:
+    image: api:1.0
+    build: .
+    networks:
+      - thesis
+    ports:
+      - 4000:4000
+    extra_hosts:
+      - "orderer.thesis.com:34.121.207.85"
+      - "orderer2.thesis.com:34.121.207.85"
+      - "orderer3.thesis.com:34.121.207.85"
+      - "peer0.thayson.thesis.com:34.121.207.85"
+      - "peer1.thayson.thesis.com:34.121.207.85"
+      - "peer0.cohuong.thesis.com:34.132.154.152"
+      - "peer1.cohuong.thesis.com:34.132.154.152"
+      - "ca.thayson.thesis.com:34.121.207.85"

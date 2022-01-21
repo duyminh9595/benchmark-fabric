@@ -1,0 +1,237 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Dashboard</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Widgets -->
+    <div class="row">
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="card card-statistic-2">
+          <div class="clearfix">
+            <div class="card-icon shadow-primary bg-purple">
+              <i class="material-icons align-middle">face</i>
+            </div>
+            <div class="card-right">
+              <div>
+                <h5 class="float-end">Số lượng nông trại</h5>
+              </div>
+              <div class="m-r-10 m-l-10">
+                <h3 class="font-weight-bold float-end mb-0"> </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="card card-statistic-2">
+          <div class="clearfix">
+            <div class="card-icon shadow-primary bg-orange">
+              <i class="material-icons align-middle">content_cut</i>
+            </div>
+            <div class="card-right">
+              <div>
+                <h5 class="float-end">Số lượng khu vực</h5>
+              </div>
+              <div class="m-r-10 m-l-10">
+                <h3 class="font-weight-bold float-end mb-0"> {{dashboardtop.hosokhambenh}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="card card-statistic-2">
+          <div class="clearfix">
+            <div class="card-icon shadow-primary bg-green">
+              <i class="material-icons align-middle">person_add</i>
+            </div>
+            <div class="card-right">
+              <div>
+                <h5 class="float-end">Số lượng mùa vụ đang gieo</h5>
+              </div>
+              <div class="m-r-10 m-l-10">
+                <h3 class="font-weight-bold float-end mb-0"> {{dashboardtop.newpatient}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6 col-xs-12">
+        <div class="card card-statistic-2">
+          <div class="clearfix">
+            <div class="card-icon shadow-primary bg-blue">
+              <i class="material-icons align-middle">local_activity</i>
+            </div>
+            <div class="card-right">
+              <div>
+                <h5 class="float-end">Số lượng sản phẩm đang sẵn</h5>
+              </div>
+              <div class="m-r-10 m-l-10">
+                <h3 class="font-weight-bold float-end mb-0"> {{dashboardtop.earning}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- #END# Widgets -->
+
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Thuốc dùng trong tháng</h2>
+            <button mat-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Action</button>
+              <button mat-menu-item>Another action</button>
+              <button mat-menu-item>Something else here</button>
+            </mat-menu>
+          </div>
+          <div class="tableBody">
+            <div class="table-responsive">
+              <table class="table table-hover ">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Tên thuốc</th>
+                    <th>Tổng số lượng</th>
+                    <th>Tổng giá tiền</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of dashboardleft">
+                    <td class="table-img">
+                      {{item.id}}
+                    </td>
+                    <td>{{item.tenthuoc}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{item.price}}</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Bác sĩ dùng tiền thuốc</h2>
+            <button mat-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Action</button>
+              <button mat-menu-item>Another action</button>
+              <button mat-menu-item>Something else here</button>
+            </mat-menu>
+          </div>
+          <div class="tableBody">
+            <div class="table-responsive">
+              <table class="table table-hover ">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Doctor Name</th>
+                    <th>Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of dashboardright">
+                    <td class="table-img">
+                      {{item.id}}
+                    </td>
+                    <td>
+                      <div class="media-title">{{item.name}}</div>
+                      <div class="text-job font-11">({{item.tenkhoa}})</div>
+                    </td>
+                    <td>
+                      <div class="badge col-green">{{item.doanhthu}}</div>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+          <div class="header">
+            <h2>
+              Ca bệnh trong ngày</h2>
+            <button mat-button [matMenuTriggerFor]="menu" class="header-dropdown">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+              <button mat-menu-item>Action</button>
+              <button mat-menu-item>Another action</button>
+              <button mat-menu-item>Something else here</button>
+            </mat-menu>
+          </div>
+          <div class="tableBody">
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Tên bệnh nhân</th>
+                    <th>Tên bác sĩ</th>
+                    <th>Chuẩn đoán</th>
+                    <th>File PDF</th>
+                    <th>Ngày tái khám</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of dashboardbot">
+                    <td class="table-img">
+                      {{item.id}}
+                    </td>
+                    <td>{{item.tenbenhnhan}}</td>
+                    <td class="text-truncate">{{item.tenbacsi}}
+                    </td>
+                    <td>{{item.chuandoan}}</td>
+                    <td>
+                      <i class="far fa-file-pdf tbl-pdf"></i>
+                    </td>
+                    <td>{{item.ngaytaikham}}</td>
+                    <td>
+                      <button mat-icon-button class="btn-tbl-edit">
+                        <mat-icon>description</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

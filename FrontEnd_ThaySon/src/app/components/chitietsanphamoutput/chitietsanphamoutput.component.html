@@ -1,0 +1,120 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Chi tiết sản phẩm đã thu hoạch</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i>Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a [routerLink]="['/danhsachvumua']" routerLinkActive="router-link-active" onClick="return false;">Danh
+                sách vụ mùa</a>
+            </li>
+            <li class="breadcrumb-item active">Chi tiết</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Your content goes here  -->
+    <div class="row clearfix">
+      <div class="col-lg-4 col-md-12">
+        <div class="card">
+          <div class="m-b-20">
+            <div class="contact-grid">
+              <div class="profile-header bg-dark">
+                <div class="user-name">Sản phẩm thu hoạch id</div>
+                <br>
+                <p>{{data.idspoutput}}</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Thông tin">
+              <div class="p-4">
+                <small class="text-muted">Ngày thu hoạch: </small>
+                <p>{{data.spoutputngaytao}}</p>
+                <hr>
+                <small class="text-muted">Đã bán chưa: </small>
+                <p>{{data.spoutputdaban}}</p>
+                <hr>
+                <small class="text-muted">Ngày bán: </small>
+                <p>{{data.spoutputngaymua}}</p>
+                <hr>
+              </div>
+            </mat-tab>
+            <mat-tab label="Vụ mùa của sản phẩm">
+              <div class="p-4">
+                <small class="text-muted">Tên vụ mùa: </small>
+                <p>{{datavumuaspoutput.name}}</p>
+                <hr>
+                <small class="text-muted">Ngày tạo vụ mùa: </small>
+                <p>{{datavumuaspoutput.datecreated}}</p>
+                <hr>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-12">
+        <div class="card">
+          <mat-tab-group>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">face</mat-icon>
+                Danh sách đợt bón phân của sản phẩm
+              </ng-template>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ngày bón phân</th>
+                    <th scope="col">Loại phân bón</th>
+                    <th scope="col">Mô tả</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of danhsachdotbonphan">
+                    <td>{{item.Record.datecreated}}</td>
+                    <td>{{item.Record.fertilizerType}}</td>
+                    <td>{{item.Record.description}}</td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">face</mat-icon>
+                Danh sách đợt chăm sóc của sản phẩm
+              </ng-template>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ngày chăm sóc</th>
+                    <th scope="col">Phương pháp</th>
+                    <th scope="col">Mô tả</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of danhsachdotchamsoc">
+                    <td>{{item.Record.datecreated}}</td>
+                    <td>{{item.Record.method}}</td>
+                    <td>{{item.Record.description}}</td>
+
+                  </tr>
+                </tbody>
+              </table>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

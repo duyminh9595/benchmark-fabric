@@ -1,0 +1,114 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Thêm nông trại</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/admin/dashboard/main">
+                <i class="fas fa-home"></i>Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2" [routerLink]="['/danhsachnongtrai']"
+              routerLinkActive="router-link-active">
+              <a onClick="return false;">Danh
+                sách nông trại</a>
+            </li>
+            <li class="breadcrumb-item active" [routerLink]="['/themnongtrai']" routerLinkActive="router-link-active">
+              Thêm nông trại</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+        <div class="card">
+          <div class="header">
+            <h2>Thêm nông trại</h2>
+
+          </div>
+          <div class="body">
+            <form class="example-form">
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập địa chỉ</mat-label>
+                    <input matInput placeholder="Nhâp địa chỉ" (keyup)="onKeyDiaChi($event)">
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập mô tả</mat-label>
+                    <input matInput placeholder="Số Điện Thoại" type="text" required (keyup)="onKeyMoTa($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập facebook</mat-label>
+                    <input matInput placeholder="Nhập facebook" type="text" (keyup)="onKeyFacebook($event)">
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập vị trí (loation)</mat-label>
+                    <input matInput placeholder="Nhập vị trí (loation)" type="text" required
+                      (keyup)="onKeyLocation($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập số điện thoại</mat-label>
+                    <input matInput placeholder="Nhập số điện thoại" type="text" (keyup)="onKeySoDienThoai($event)">
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập địa chỉ website</mat-label>
+                    <input matInput placeholder="Nhập địa chỉ website" type="text" (keyup)="onKeyDiaChiWebsite($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập email nông trại</mat-label>
+                    <input matInput placeholder="Nhập email nông trại" type="text" (keyup)="onKeyEmail($event)">
+                  </mat-form-field>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Nhập tên nông trại</mat-label>
+                    <input matInput placeholder="Nhập tên nông trại" type="text" (keyup)="onKeyTenNongTrai($event)">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-3">
+                  <input (change)="upload($event)" type="file" accept="image/png, image/gif, image/jpeg" name="files"
+                    placeholder="Hình ảnh Logo" class="form-control" />
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <h1>Hình ảnh Logo</h1>
+                  <img src={{nongtrai.logo}} style="width: 300px;height: 300px;display: block;" />
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 mb-3">
+                  <h1>Chức năng</h1>
+                  <button type="button" class="btn btn-primary" style="margin-right: 20px;"
+                    (click)="thucHienThemNongTrai()">Submit</button>
+                  <button type="button" class="btn btn-light" style="margin-right: 20px;"
+                    (click)="doExit()">Thoát</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

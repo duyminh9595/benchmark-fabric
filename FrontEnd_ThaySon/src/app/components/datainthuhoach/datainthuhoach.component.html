@@ -1,0 +1,103 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Chi tiết đợt thu hoạch</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i>Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a [routerLink]="['/danhsachvumua']" routerLinkActive="router-link-active" onClick="return false;">Danh
+                sách vụ mùa</a>
+            </li>
+            <li class="breadcrumb-item active">Chi tiết</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Your content goes here  -->
+    <div class="row clearfix">
+      <div class="col-lg-4 col-md-12">
+        <div class="card">
+          <div class="m-b-20">
+            <div class="contact-grid">
+              <div class="profile-header bg-dark">
+                <div class="user-name">Đợt thu hoạch id</div>
+                <br>
+                <p>{{data.iddotthuhoach}}</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Thông tin">
+              <div class="p-4">
+                <small class="text-muted">Ngày tạo: </small>
+                <p>{{data.ngaytaodotthuhoach}}</p>
+                <hr>
+                <small class="text-muted">Kết quả: </small>
+                <p>{{data.ketquatrongdotthuhoach}}</p>
+                <hr>
+                <small class="text-muted">Tên nông sản: </small>
+                <p>{{namenongsan}}</p>
+                <hr>
+                <small class="text-muted">Số lượng: </small>
+                <p>{{data.soluongtrongdotthuhoach}}</p>
+                <hr>
+              </div>
+            </mat-tab>
+            <mat-tab label="Chức năng">
+
+              <div class="p-4" style="width: 100%;">
+                <button type="button" class="btn btn-primary" style="width: 100%;" (click)="thuHoachSanPham()">Thu hoạch
+                  sản phẩm</button>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-12">
+        <div class="card">
+          <mat-tab-group>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">face</mat-icon>
+                Danh sách sản phầm trong đợt thu hoạch
+              </ng-template>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">ID sản phẩm</th>
+                    <th scope="col">Ngày thu hoạch</th>
+                    <th scope="col">Đã bán chưa</th>
+                    <th scope="col">Ngày bán</th>
+                    <th scope="col">Chi tiết chăm sóc</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of danhsachsanphamoutput">
+                    <td>{{item.Key}}</td>
+                    <td>{{item.Record.datecreated}}</td>
+                    <td>{{item.Record.daban}}</td>
+                    <td>{{item.Record.ngaymua}}</td>
+                    <td><button mat-icon-button color="accent" class="btn-tbl-delete"
+                        (click)="chitietchamsocsanphamoutput(item)">
+                        <mat-icon aria-label="Delete" class="col-white">description</mat-icon>
+                      </button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

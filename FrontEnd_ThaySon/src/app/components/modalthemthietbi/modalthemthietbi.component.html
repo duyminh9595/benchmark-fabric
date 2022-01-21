@@ -1,0 +1,31 @@
+<h1 mat-dialog-title style="text-align: center;">Thêm thiết bị</h1>
+<div mat-dialog-content>
+  <p>Nhập tên thiết bị</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập tên thiết bị</mat-label>
+    <input matInput placeholder="Nhập tên thiết bị" type="text" required (keyup)="onKeyNameThietBi($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Nhập mô tả thiết bị</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập mô tả thiết bị</mat-label>
+    <input matInput placeholder="Nhập mô tả thiết bị" type="text" required (keyup)="onKeyMoTa($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Chọn khu vực trong nông trai</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Chọn khu vực trong nông trại</mat-label>
+    <mat-select (selectionChange)="changeKhuVuc($event.value)">
+      <mat-option [value]="item.Key" *ngFor="let item of dataInject.danhsachkhuvuccuanongtrai">
+        {{item.Record.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="themThietBi()">Add</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

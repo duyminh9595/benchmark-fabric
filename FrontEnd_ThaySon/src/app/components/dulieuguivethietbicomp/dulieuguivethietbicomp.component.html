@@ -1,0 +1,97 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Chi tiết thiết bị</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i>Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a [routerLink]="['/danhsachthietbi']" routerLinkActive="router-link-active" onClick="return false;">Danh
+                sách thiết bị</a>
+            </li>
+            <li class="breadcrumb-item active">Chi tiết</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Your content goes here  -->
+    <div class="row clearfix">
+      <div class="col-lg-4 col-md-12">
+        <div class="card">
+          <div class="m-b-20">
+            <div class="contact-grid">
+              <div class="profile-header bg-dark">
+                <div class="user-name">Thiết bị id </div>
+                <br>
+                <p>{{data.Key}}</p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Thông tin">
+              <div class="p-4">
+                <small class="text-muted">Nông trại id: </small>
+                <p>{{data.Record.addressfarm}}</p>
+                <hr>
+                <small class="text-muted">Khu vực id: </small>
+                <p>{{data.Record.location}}</p>
+                <hr>
+                <small class="text-muted">Mô tả thiết bị: </small>
+                <p>{{data.Record.description }}</p>
+                <hr>
+                <small class="text-muted">Tên thiết bị: </small>
+                <p>{{data.Record.name}}</p>
+                <hr>
+              </div>
+            </mat-tab>
+            <mat-tab label="Chức năng">
+              <div class="p-4" style="width: 100%;">
+                <button type="button" class="btn btn-primary" style="width: 100%;" (click)="themDuLieuChoThietBi()">Thêm
+                  dữ liệu cho thiết bị</button>
+
+              </div>
+
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-12">
+        <div class="card">
+          <mat-tab-group>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">face</mat-icon>
+                Dữ liệu đã gửi về thiết bị
+              </ng-template>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Ngày gửi</th>
+                    <th scope="col">Nhiệt độ</th>
+                    <th scope="col">Độ ẩm</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of dulieutrongthietbi">
+                    <td>{{item.Record.datecreated}}</td>
+                    <td>{{item.Record.nhietdo}}</td>
+                    <td>{{item.Record.doam}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

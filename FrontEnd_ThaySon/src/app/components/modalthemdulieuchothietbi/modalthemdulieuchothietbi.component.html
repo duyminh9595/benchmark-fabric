@@ -1,0 +1,20 @@
+<h1 mat-dialog-title style="text-align: center;">Thêm dữ liệu cho thiết bị</h1>
+<div mat-dialog-content>
+  <p>Nhập nhiệt độ</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập nhiệt độ</mat-label>
+    <input matInput placeholder="Nhập nhiệt độ" type="text" required (keyup)="onKeyNhietDo($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Nhập độ ẩm</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập độ ẩm</mat-label>
+    <input matInput placeholder="Nhập độ ẩm" type="text" required (keyup)="onKeyDoAm($event)">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="themData()">Add</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

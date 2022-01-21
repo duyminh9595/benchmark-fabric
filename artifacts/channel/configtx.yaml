@@ -1,0 +1,354 @@
+Organizations:
+
+    - &OrdererOrg
+        Name: OrdererOrg
+        ID: OrdererMSP
+        MSPDir: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/msp
+
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Writers:
+                Type: Signature
+                Rule: "OR('OrdererMSP.member')"
+            Admins:
+                Type: Signature
+                Rule: "OR('OrdererMSP.admin')"
+
+    - &thayson
+        Name: thaysonMSP
+        ID: thaysonMSP
+
+        MSPDir: ../../setup1/thayson/crypto-config/peerOrganizations/thayson.thesis.com/msp
+
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('thaysonMSP.admin', 'thaysonMSP.peer', 'thaysonMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('thaysonMSP.admin', 'thaysonMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('thaysonMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('thaysonMSP.peer')"
+
+        AnchorPeers:
+            - Host: peer0.thayson.thesis.com
+              Port: 7051
+
+    - &cohuong
+        Name: cohuongMSP
+
+        ID: cohuongMSP
+
+        MSPDir: ../../setup1/cohuong/crypto-config/peerOrganizations/cohuong.thesis.com/msp
+
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('cohuongMSP.admin', 'cohuongMSP.peer', 'cohuongMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('cohuongMSP.admin', 'cohuongMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('cohuongMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('cohuongMSP.peer')"
+
+        AnchorPeers:
+            - Host: peer0.cohuong.thesis.com
+              Port: 9051
+
+    - &node_aus
+        Name: node_ausMSP
+        ID: node_ausMSP
+
+        MSPDir: ../../setup1/node_aus/crypto-config/peerOrganizations/node_aus.thesis.com/msp
+
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('node_ausMSP.admin', 'node_ausMSP.peer', 'node_ausMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('node_ausMSP.admin', 'node_ausMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('node_ausMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('node_ausMSP.peer')"
+
+        AnchorPeers:
+            - Host: peer0.node_aus.thesis.com
+              Port: 7051
+    
+    - &node_eu
+        Name: node_euMSP
+        ID: node_euMSP
+
+        MSPDir: ../../setup1/node_eu/crypto-config/peerOrganizations/node_eu.thesis.com/msp
+
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('node_euMSP.admin', 'node_euMSP.peer', 'node_euMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('node_euMSP.admin', 'node_euMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('node_euMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('node_euMSP.peer')"
+
+        AnchorPeers:
+            - Host: peer0.node_eu.thesis.com
+              Port: 7051
+    
+    - &node_japan
+        Name: node_japanMSP
+        ID: node_japanMSP
+
+        MSPDir: ../../setup1/node_japan/crypto-config/peerOrganizations/node_japan.thesis.com/msp
+
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('node_japanMSP.admin', 'node_japanMSP.peer', 'node_japanMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('node_japanMSP.admin', 'node_japanMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('node_japanMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('node_japanMSP.peer')"
+
+        AnchorPeers:
+            - Host: peer0.node_japan.thesis.com
+              Port: 7051
+    
+    - &node_sing
+        Name: node_singMSP
+        ID: node_singMSP
+
+        MSPDir: ../../setup1/node_sing/crypto-config/peerOrganizations/node_sing.thesis.com/msp
+
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('node_singMSP.admin', 'node_singMSP.peer', 'node_singMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('node_singMSP.admin', 'node_singMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('node_singMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('node_singMSP.peer')"
+
+        AnchorPeers:
+            - Host: peer0.node_sing.thesis.com
+              Port: 7051
+    
+    - &node_us
+        Name: node_usMSP
+        ID: node_usMSP
+
+        MSPDir: ../../setup1/node_us/crypto-config/peerOrganizations/node_us.thesis.com/msp
+
+        Policies:
+            Readers:
+                Type: Signature
+                Rule: "OR('node_usMSP.admin', 'node_usMSP.peer', 'node_usMSP.client')"
+            Writers:
+                Type: Signature
+                Rule: "OR('node_usMSP.admin', 'node_usMSP.client')"
+            Admins:
+                Type: Signature
+                Rule: "OR('node_usMSP.admin')"
+            Endorsement:
+                Type: Signature
+                Rule: "OR('node_usMSP.peer')"
+
+        AnchorPeers:
+            - Host: peer0.node_us.thesis.com
+              Port: 7051
+
+Capabilities:
+    Channel: &ChannelCapabilities
+        V2_0: true
+
+    Orderer: &OrdererCapabilities
+        V2_0: true
+
+    Application: &ApplicationCapabilities
+        V2_0: true
+
+Application: &ApplicationDefaults
+
+    Organizations:
+
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        LifecycleEndorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+        Endorsement:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Endorsement"
+
+    Capabilities:
+        <<: *ApplicationCapabilities
+
+Orderer: &OrdererDefaults
+
+    OrdererType: etcdraft
+
+    EtcdRaft:
+        Consenters:
+        - Host: orderer.thesis.com
+          Port: 7050
+          ClientTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/tls/server.crt
+          ServerTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/tls/server.crt
+    Addresses:
+        - orderer.thesis.com:7050
+
+    BatchTimeout: 2s
+    BatchSize:
+        MaxMessageCount: 10
+        AbsoluteMaxBytes: 99 MB
+        PreferredMaxBytes: 512 KB
+
+    Organizations:
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+        BlockValidation:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+
+Channel: &ChannelDefaults
+    Policies:
+        Readers:
+            Type: ImplicitMeta
+            Rule: "ANY Readers"
+        Writers:
+            Type: ImplicitMeta
+            Rule: "ANY Writers"
+        Admins:
+            Type: ImplicitMeta
+            Rule: "MAJORITY Admins"
+
+    Capabilities:
+        <<: *ChannelCapabilities
+
+Profiles:
+
+    BasicChannel:
+        Consortium: SampleConsortium
+        <<: *ChannelDefaults
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *thayson
+                - *cohuong
+                - *node_aus
+                - *node_eu
+                - *node_japan
+                - *node_sing
+                - *node_us
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    ChannelOnlyThaySon:
+        Consortium: ThaySonConsortium
+        <<: *ChannelDefaults
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *thayson
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    ChannelOnlyCoHuong:
+        Consortium: CoHuongConsortium
+        <<: *ChannelDefaults
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *cohuong
+            Capabilities:
+                <<: *ApplicationCapabilities
+
+    OrdererGenesis:
+        <<: *ChannelDefaults
+        Capabilities:
+            <<: *ChannelCapabilities
+        Orderer:
+            <<: *OrdererDefaults
+            OrdererType: etcdraft
+            EtcdRaft:
+                Consenters:
+                - Host: orderer.thesis.com
+                  Port: 7050
+                  ClientTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/tls/server.crt
+                  ServerTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/tls/server.crt
+                - Host: orderer2.thesis.com
+                  Port: 8050
+                  ClientTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer2.thesis.com/tls/server.crt
+                  ServerTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer2.thesis.com/tls/server.crt
+                - Host: orderer3.thesis.com
+                  Port: 9050
+                  ClientTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer3.thesis.com/tls/server.crt
+                  ServerTLSCert: ../../setup1/orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer3.thesis.com/tls/server.crt
+            Addresses:
+                - orderer.thesis.com:7050
+                - orderer2.thesis.com:8050
+                - orderer3.thesis.com:9050
+
+            Organizations:
+            - *OrdererOrg
+            Capabilities:
+                <<: *OrdererCapabilities
+        Consortiums:
+            SampleConsortium:
+                Organizations:
+                - *thayson
+                - *cohuong
+                - *node_aus
+                - *node_eu
+                - *node_japan
+                - *node_sing
+                - *node_us
+            ThaySonConsortium:
+                Organizations:
+                - *thayson
+            CoHuongConsortium:
+                Organizations:
+                - *thayson

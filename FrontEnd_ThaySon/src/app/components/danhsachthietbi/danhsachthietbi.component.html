@@ -1,0 +1,107 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Danh sách thiết bị của tổ chức</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i> Home</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a href="#" onClick="return false;">Danh sách thiết bị của tổ chức </a>
+            </li>
+            <li class="breadcrumb-item active">View</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="body">
+            <div class="table-responsive">
+              <div class="materialTableHeader">
+                <div class="row">
+                  <div class="col-8">
+                    <ul class="header-buttons-left ms-0">
+                      <li class="dropdown">
+                        <h2>
+                          <strong>Danh sách thiết bị</strong></h2>
+                      </li>
+                      <li class="dropdown m-l-20">
+                        <label for="search-input"><i class="material-icons search-icon">search</i></label>
+                        <input placeholder="Search" type="text" #filter class="browser-default search-field"
+                          aria-label="Search box">
+                      </li>
+                      <li>
+                        <div class="icon-button-demo m-l-10">
+                          <button mat-mini-fab color="warn">
+                            <mat-icon class="col-white">delete</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-4">
+                    <ul class="header-buttons">
+                      <li>
+                        <div class="icon-button-demo">
+                        </div>
+                      </li>
+                      <li>
+                        <div class="icon-button-demo">
+                          <button mat-mini-fab color="primary">
+                            <mat-icon class="col-white">refresh</mat-icon>
+                          </button>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <table class="table" style="width: 100%;">
+                <thead>
+                  <tr>
+                    <th scope="col">ID thiết bị</th>
+                    <th scope="col">Tên thiết bị</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">ID khu vực</th>
+                    <th scope="col">ID nông trại</th>
+                    <th scope="col">Xem nông trại</th>
+                    <th scope="col">Xem dữ liệu gửi về thiết bị </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of danhsachthietbi">
+                    <td>{{item.Key | slice:0:15}}</td>
+                    <td>{{item.Record.name}}</td>
+                    <td>{{item.Record.description}}</td>
+                    <td>{{item.Record.location | slice:0:15}}</td>
+                    <td>{{item.Record.addressfarm | slice:0:15}}</td>
+                    <td>
+                      <button mat-icon-button color="accent" class="btn-tbl-delete"
+                        (click)="xemchitietnongtrai(item.Record.addressfarm)">
+                        <mat-icon aria-label="Delete" class="col-white">description</mat-icon>
+                      </button>
+                    </td>
+                    <td>
+                      <button mat-icon-button color="accent" class="btn-tbl-delete"
+                        (click)="xemDuLieuGuiVeThietBi(item.Key,item)">
+                        <mat-icon aria-label="Delete" class="col-white">description</mat-icon>
+                      </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

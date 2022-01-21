@@ -1,0 +1,27 @@
+<h1 mat-dialog-title style="text-align: center;">Thêm đợt thu hoạch</h1>
+<div mat-dialog-content>
+  <p>Nhập số lượng</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập số lượng</mat-label>
+    <input matInput placeholder="Nhập số lượng" type="text" required (keyup)="onKeySoLuong($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Nhập kết quả</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập kết quả</mat-label>
+    <input matInput placeholder="Nhập kết quả" type="text" required (keyup)="onKeyKetQua($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Nhập mô tả</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập mô tả</mat-label>
+    <input matInput placeholder="Nhập mô tả" type="text" required (keyup)="onKeyMoTa($event)">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="themDotThuHoach()">Add</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

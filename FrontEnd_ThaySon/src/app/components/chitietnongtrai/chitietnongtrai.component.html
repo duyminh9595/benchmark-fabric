@@ -1,0 +1,183 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          <ul class="breadcrumb breadcrumb-style ">
+            <li class="breadcrumb-item">
+              <h4 class="page-title">Chi tiết nông trại</h4>
+            </li>
+            <li class="breadcrumb-item bcrumb-1">
+              <a routerLink="/">
+                <i class="fas fa-home"></i>Trang chủ</a>
+            </li>
+            <li class="breadcrumb-item bcrumb-2">
+              <a [routerLink]="['/danhsachnongtrai']" routerLinkActive="router-link-active" onClick="return false;">Danh
+                sách nông trại</a>
+            </li>
+            <li class="breadcrumb-item active">Chi tiết</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Your content goes here  -->
+    <div class="row clearfix">
+      <div class="col-lg-4 col-md-12">
+        <div class="card">
+          <div class="m-b-20">
+            <div class="contact-grid">
+              <div class="profile-header bg-dark">
+                <div class="user-name">Nông trại id: </div>
+                <br>
+                <p>{{id}} </p>
+              </div>
+              <img src={{data.logo}} class="user-img" alt="">
+
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="Thông tin">
+              <div class="p-4">
+                <small class="text-muted">Địa chỉ: </small>
+                <p>{{data.address}}</p>
+                <hr>
+                <small class="text-muted">Mô tả: </small>
+                <p>{{data.description}}</p>
+                <hr>
+                <small class="text-muted">Email: </small>
+                <p>{{data.email}}</p>
+                <hr>
+                <small class="text-muted">Facebook: </small>
+                <p>{{data.facebook}}</p>
+                <hr>
+                <small class="text-muted">Tên nông trại: </small>
+                <p>{{data.name}}</p>
+                <hr>
+                <small class="text-muted">Website: </small>
+                <p>{{data.website}}</p>
+                <hr>
+              </div>
+            </mat-tab>
+            <mat-tab label="Chức năng">
+              <div class="p-4" style="width: 100%;">
+                <button type="button" class="btn btn-primary" style="width: 100%;" (click)="themVuMua()">Thêm vụ
+                  mùa</button>
+
+              </div>
+              <div class="p-4" style="width: 100%;">
+                <button type="button" class="btn btn-primary" style="width: 100%;" (click)="themKhuVuc()">Thêm khu
+                  vực</button>
+
+              </div>
+              <div class="p-4" style="width: 100%;">
+                <button type="button" class="btn btn-primary" style="width: 100%;" (click)="themNongSan()">Thêm nông
+                  sản</button>
+              </div>
+              <div class="p-4" style="width: 100%;">
+                <button type="button" class="btn btn-primary" style="width: 100%;" (click)="themThietBi()">Thêm thiết
+                  bị</button>
+              </div>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+      <div class="col-lg-8 col-md-12">
+        <div class="card">
+          <mat-tab-group>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">face</mat-icon>
+                Danh sách khu vực
+              </ng-template>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên khu vực</th>
+                    <th scope="col">Mô tả</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of danhsachkhuvuccuanongtrai">
+                    <td>{{item.Record.name}}</td>
+                    <td>{{item.Record.description}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-tab>
+
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">settings</mat-icon>
+                Danh sách nông sản
+              </ng-template>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên nông sản</th>
+                    <th scope="col">Mô tả</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of danhsachnongsancuanongtrai">
+                    <td>{{item.Record.name}}</td>
+                    <td>{{item.Record.description}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">settings</mat-icon>
+                Danh sách vụ mùa
+              </ng-template>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên vụ mùa</th>
+                    <th scope="col">Chi tiết</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of danhsachvumua">
+                    <td>{{item.Record.name}}</td>
+                    <td><button mat-icon-button color="accent" class="btn-tbl-delete" (click)="chiTietVuMua(item.Key)">
+                        <mat-icon aria-label="Delete" class="col-white">description</mat-icon>
+                      </button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <mat-icon class="example-tab-icon msr-2">settings</mat-icon>
+                Danh sách thiết bị của nông trại
+              </ng-template>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên thiết bị</th>
+                    <th scope="col">Mô tả</th>
+                    <th scope="col">ID khu vực</th>
+                    <th scope="col">Chi tiết thiết bị</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of danhsachthietbi">
+                    <td>{{item.Record.name}}</td>
+                    <td>{{item.Record.description}}</td>
+                    <td>{{item.Record.location}}</td>
+                    <td><button mat-icon-button color="accent" class="btn-tbl-delete" (click)="chiTietThietBi(item)">
+                        <mat-icon aria-label="Delete" class="col-white">description</mat-icon>
+                      </button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </mat-tab>
+          </mat-tab-group>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title style="text-align: center;">Thêm đợt gieo trồng</h1>
+<div mat-dialog-content>
+  <p>Nhập mô tả</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập mô tả</mat-label>
+    <input matInput placeholder="Nhập mô tả" type="text" required (keyup)="onKeyMoTa($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Nhập nguồn gốc</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập nguồn gốc</mat-label>
+    <input matInput placeholder="Nhập nguồn gốc" type="text" required (keyup)="onKeyNguonGoc($event)">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="themDotGieoTrong()">Add</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

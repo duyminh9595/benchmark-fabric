@@ -1,0 +1,36 @@
+<h1 mat-dialog-title style="text-align: center;">Thêm vụ mùa</h1>
+<h3 *ngIf="error" style="color: red;">Có chưa chọn</h3>
+<div mat-dialog-content>
+  <p>Nhập tên vụ mùa</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập tên vụ mùa</mat-label>
+    <input matInput placeholder="Nhập tên vụ mùa" type="text" required (keyup)="onKeyNameVuMua($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Chọn khu vực trong nông trai</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Chọn khu vực trong nông trại</mat-label>
+    <mat-select (selectionChange)="changeKhuVuc($event.value)">
+      <mat-option [value]="item.Key" *ngFor="let item of dataInJectThemVuMua.danhsachkhuvuccuanongtrai">
+        {{item.Record.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Chọn nông sản </p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Chọn nông sản</mat-label>
+    <mat-select (selectionChange)="changeNongSan($event.value)">
+      <mat-option [value]="item.Key" *ngFor="let item of dataInJectThemVuMua.danhsachnongsancuanongtrai">
+        {{item.Record.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="themvumua()">Add</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>

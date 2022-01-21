@@ -1,0 +1,20 @@
+<h1 mat-dialog-title style="text-align: center;">Thêm đợt chăm sóc</h1>
+<div mat-dialog-content>
+  <p>Nhập mô tả</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập mô tả</mat-label>
+    <input matInput placeholder="Nhập mô tả" type="text" required (keyup)="onKeyMoTa($event)">
+  </mat-form-field>
+</div>
+<div mat-dialog-content>
+  <p>Nhập phương pháp</p>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Nhập phương pháp</mat-label>
+    <input matInput placeholder="Nhập phương pháp" type=" text" required (keyup)="onKeyPhuongPhap($event)">
+  </mat-form-field>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="themDotChamSoc()">Add</button>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>
