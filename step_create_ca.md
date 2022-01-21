@@ -29,17 +29,25 @@ rm -r -f ../node_sing/create-certificate-with-ca/fabric-ca/
 
 
 # tạo ca
-cd /home/ubuntu/benchmark-fabric/setup1/thayson/create-certificate-with-ca/
+cd /home/ubuntu/benchmark-fabric/setup1/vm1/create-certificate-with-ca/
 docker-compose up -d
 ./create-certificate-with-ca.sh 
 
-cd ../../cohuong/create-certificate-with-ca/
+cd ../../vm2/create-certificate-with-ca/
 docker-compose up -d
 ./create-certificate-with-ca.sh 
 
-cd ../../orderer/create-certificate-with-ca/
+cd ../../vm3/create-certificate-with-ca/
 docker-compose up -d
 ./create-certificate-with-ca.sh 
+
+cd ../../vm4/create-certificate-with-ca/
+docker-compose up -d
+./create-certificate-with-ca.sh 
+
+cd ../../../artifacts/channel/
+./create-artifacts.sh 
+
 
 cd ../../node_aus/create-certificate-with-ca/
 docker-compose up -d
