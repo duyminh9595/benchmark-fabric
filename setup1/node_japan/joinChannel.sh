@@ -9,21 +9,21 @@ setGlobalsForPeer0nodejapan() {
     export CORE_PEER_LOCALMSPID="nodejapanMSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_nodejapan_CA
     export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/nodejapan.thesis.com/users/Admin@nodejapan.thesis.com/msp
-    export CORE_PEER_ADDRESS=localhost:9051
+    export CORE_PEER_ADDRESS=localhost:15051
 
 }
 setGlobalsForPeer1nodejapan() {
     export CORE_PEER_LOCALMSPID="nodejapanMSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_nodejapan_CA
     export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/nodejapan.thesis.com/users/Admin@nodejapan.thesis.com/msp
-    export CORE_PEER_ADDRESS=localhost:10051
+    export CORE_PEER_ADDRESS=localhost:16051
 
 }
 fetchChannelBlock() {
     rm -rf ./channel-artifacts/*
     setGlobalsForPeer0nodejapan
     # Replace localhost with your orderer's vm IP address
-    peer channel fetch 0 ./channel-artifacts/$CHANNEL_NAME.block -o localhost:7050 \
+    peer channel fetch 0 ./channel-artifacts/$CHANNEL_NAME.block -o 130.211.113.30:7050 \
         --ordererTLSHostnameOverride orderer.thesis.com \
         -c $CHANNEL_NAME --tls --cafile $ORDERER_CA
 }
@@ -39,7 +39,7 @@ joinChannel() {
 updateAnchorPeers() {
     setGlobalsForPeer0nodejapan
     # Replace localhost with your orderer's vm IP address
-    peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.thesis.com \
+    peer channel update -o 130.211.113.30:7050 --ordererTLSHostnameOverride orderer.thesis.com \
         -c $CHANNEL_NAME -f ./../../artifacts/channel/${CORE_PEER_LOCALMSPID}anchors.tx \
         --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA
 

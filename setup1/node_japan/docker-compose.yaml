@@ -38,12 +38,12 @@ services:
       - CORE_PEER_LOCALMSPID=nodejapanMSP
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_thesis
       - CORE_PEER_ID=peer0.nodejapan.thesis.com
-      - CORE_PEER_ADDRESS=peer0.nodejapan.thesis.com:7051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.nodejapan.thesis.com:7052
-      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.nodejapan.thesis.com:8051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.nodejapan.thesis.com:7051
+      - CORE_PEER_ADDRESS=peer0.nodejapan.thesis.com:15051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:15051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.nodejapan.thesis.com:15052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:15052
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.nodejapan.thesis.com:16051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.nodejapan.thesis.com:15051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb0:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
@@ -57,7 +57,7 @@ services:
     depends_on:
       - couchdb0
     ports:
-      - 7051:7051
+      - 15051:15051
     volumes:
       - ./crypto-config/peerOrganizations/nodejapan.thesis.com/peers/peer0.nodejapan.thesis.com/msp:/etc/hyperledger/crypto/peer/msp
       - ./crypto-config/peerOrganizations/nodejapan.thesis.com/peers/peer0.nodejapan.thesis.com/tls:/etc/hyperledger/crypto/peer/tls
@@ -99,13 +99,13 @@ services:
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_thesis
 
       - CORE_PEER_ID=peer1.nodejapan.thesis.com
-      - CORE_PEER_ADDRESS=peer1.nodejapan.thesis.com:8051
-      - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
+      - CORE_PEER_ADDRESS=peer1.nodejapan.thesis.com:16051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:16051
       - CORE_PEER_CHAINCODEADDRESS=peer1.nodejapan.thesis.com:8052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
       # Exposed for discovery Service
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.nodejapan.thesis.com:8051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.nodejapan.thesis.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.nodejapan.thesis.com:16051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.nodejapan.thesis.com:15051
 
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb1:5984
@@ -119,7 +119,7 @@ services:
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/crypto/peer/tls/ca.crt
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/crypto/peer/msp
     ports:
-      - 8051:8051
+      - 16051:16051
     volumes:
       - ./crypto-config/peerOrganizations/nodejapan.thesis.com/peers/peer1.nodejapan.thesis.com/msp:/etc/hyperledger/crypto/peer/msp
       - ./crypto-config/peerOrganizations/nodejapan.thesis.com/peers/peer1.nodejapan.thesis.com/tls:/etc/hyperledger/crypto/peer/tls

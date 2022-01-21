@@ -87,7 +87,7 @@ Organizations:
 
         AnchorPeers:
             - Host: peer0.nodeaus.thesis.com
-              Port: 7051
+              Port: 11051
     
     - &nodeeu
         Name: nodeeuMSP
@@ -111,7 +111,7 @@ Organizations:
 
         AnchorPeers:
             - Host: peer0.nodeeu.thesis.com
-              Port: 7051
+              Port: 13051
     
     - &nodejapan
         Name: nodejapanMSP
@@ -135,7 +135,7 @@ Organizations:
 
         AnchorPeers:
             - Host: peer0.nodejapan.thesis.com
-              Port: 7051
+              Port: 15051
     
     - &nodesing
         Name: nodesingMSP
@@ -159,7 +159,7 @@ Organizations:
 
         AnchorPeers:
             - Host: peer0.nodesing.thesis.com
-              Port: 7051
+              Port: 17051
     
     - &nodeus
         Name: nodeusMSP
@@ -183,7 +183,7 @@ Organizations:
 
         AnchorPeers:
             - Host: peer0.nodeus.thesis.com
-              Port: 7051
+              Port: 19051
 
 Capabilities:
     Channel: &ChannelCapabilities

@@ -1,2 +1,2 @@
 Installed chaincodes on peer:
-
+Package ID: benchmark_nodejs_1:6e01604d34e2b8921a6f4435ccc9cc5f8cf80ceff209aa87fa28f9be6108ff2d, Label: benchmark_nodejs_1
