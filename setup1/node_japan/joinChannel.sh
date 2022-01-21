@@ -1,43 +1,43 @@
 export CORE_PEER_TLS_ENABLED=true
 export ORDERER_CA=${PWD}/../orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/msp/tlscacerts/tlsca.thesis.com-cert.pem
-export PEER0_node_japan_CA=${PWD}/crypto-config/peerOrganizations/node_japan.thesis.com/peers/peer0.node_japan.thesis.com/tls/ca.crt
+export PEER0_nodejapan_CA=${PWD}/crypto-config/peerOrganizations/nodejapan.thesis.com/peers/peer0.nodejapan.thesis.com/tls/ca.crt
 export FABRIC_CFG_PATH=${PWD}/../../artifacts/channel/config/
 
 export CHANNEL_NAME=mychannel
 
-setGlobalsForPeer0node_japan() {
-    export CORE_PEER_LOCALMSPID="node_japanMSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_node_japan_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/node_japan.thesis.com/users/Admin@node_japan.thesis.com/msp
+setGlobalsForPeer0nodejapan() {
+    export CORE_PEER_LOCALMSPID="nodejapanMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_nodejapan_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/nodejapan.thesis.com/users/Admin@nodejapan.thesis.com/msp
     export CORE_PEER_ADDRESS=localhost:9051
 
 }
-setGlobalsForPeer1node_japan() {
-    export CORE_PEER_LOCALMSPID="node_japanMSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_node_japan_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/node_japan.thesis.com/users/Admin@node_japan.thesis.com/msp
+setGlobalsForPeer1nodejapan() {
+    export CORE_PEER_LOCALMSPID="nodejapanMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_nodejapan_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/nodejapan.thesis.com/users/Admin@nodejapan.thesis.com/msp
     export CORE_PEER_ADDRESS=localhost:10051
 
 }
 fetchChannelBlock() {
     rm -rf ./channel-artifacts/*
-    setGlobalsForPeer0node_japan
+    setGlobalsForPeer0nodejapan
     # Replace localhost with your orderer's vm IP address
     peer channel fetch 0 ./channel-artifacts/$CHANNEL_NAME.block -o localhost:7050 \
         --ordererTLSHostnameOverride orderer.thesis.com \
         -c $CHANNEL_NAME --tls --cafile $ORDERER_CA
 }
 joinChannel() {
-    setGlobalsForPeer0node_japan
+    setGlobalsForPeer0nodejapan
     peer channel join -b ./channel-artifacts/$CHANNEL_NAME.block
 
-    setGlobalsForPeer1node_japan
+    setGlobalsForPeer1nodejapan
     peer channel join -b ./channel-artifacts/$CHANNEL_NAME.block
 
 }
 
 updateAnchorPeers() {
-    setGlobalsForPeer0node_japan
+    setGlobalsForPeer0nodejapan
     # Replace localhost with your orderer's vm IP address
     peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.thesis.com \
         -c $CHANNEL_NAME -f ./../../artifacts/channel/${CORE_PEER_LOCALMSPID}anchors.tx \

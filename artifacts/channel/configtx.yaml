@@ -65,124 +65,124 @@ Organizations:
             - Host: peer0.cohuong.thesis.com
               Port: 9051
 
-    - &node_aus
-        Name: node_ausMSP
-        ID: node_ausMSP
+    - &nodeaus
+        Name: nodeausMSP
+        ID: nodeausMSP
 
-        MSPDir: ../../setup1/node_aus/crypto-config/peerOrganizations/node_aus.thesis.com/msp
+        MSPDir: ../../setup1/node_aus/crypto-config/peerOrganizations/nodeaus.thesis.com/msp
 
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('node_ausMSP.admin', 'node_ausMSP.peer', 'node_ausMSP.client')"
+                Rule: "OR('nodeausMSP.admin', 'nodeausMSP.peer', 'nodeausMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('node_ausMSP.admin', 'node_ausMSP.client')"
+                Rule: "OR('nodeausMSP.admin', 'nodeausMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('node_ausMSP.admin')"
+                Rule: "OR('nodeausMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('node_ausMSP.peer')"
+                Rule: "OR('nodeausMSP.peer')"
 
         AnchorPeers:
-            - Host: peer0.node_aus.thesis.com
+            - Host: peer0.nodeaus.thesis.com
               Port: 7051
     
-    - &node_eu
-        Name: node_euMSP
-        ID: node_euMSP
+    - &nodeeu
+        Name: nodeeuMSP
+        ID: nodeeuMSP
 
-        MSPDir: ../../setup1/node_eu/crypto-config/peerOrganizations/node_eu.thesis.com/msp
+        MSPDir: ../../setup1/node_eu/crypto-config/peerOrganizations/nodeeu.thesis.com/msp
 
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('node_euMSP.admin', 'node_euMSP.peer', 'node_euMSP.client')"
+                Rule: "OR('nodeeuMSP.admin', 'nodeeuMSP.peer', 'nodeeuMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('node_euMSP.admin', 'node_euMSP.client')"
+                Rule: "OR('nodeeuMSP.admin', 'nodeeuMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('node_euMSP.admin')"
+                Rule: "OR('nodeeuMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('node_euMSP.peer')"
+                Rule: "OR('nodeeuMSP.peer')"
 
         AnchorPeers:
-            - Host: peer0.node_eu.thesis.com
+            - Host: peer0.nodeeu.thesis.com
               Port: 7051
     
-    - &node_japan
-        Name: node_japanMSP
-        ID: node_japanMSP
+    - &nodejapan
+        Name: nodejapanMSP
+        ID: nodejapanMSP
 
-        MSPDir: ../../setup1/node_japan/crypto-config/peerOrganizations/node_japan.thesis.com/msp
+        MSPDir: ../../setup1/node_japan/crypto-config/peerOrganizations/nodejapan.thesis.com/msp
 
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('node_japanMSP.admin', 'node_japanMSP.peer', 'node_japanMSP.client')"
+                Rule: "OR('nodejapanMSP.admin', 'nodejapanMSP.peer', 'nodejapanMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('node_japanMSP.admin', 'node_japanMSP.client')"
+                Rule: "OR('nodejapanMSP.admin', 'nodejapanMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('node_japanMSP.admin')"
+                Rule: "OR('nodejapanMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('node_japanMSP.peer')"
+                Rule: "OR('nodejapanMSP.peer')"
 
         AnchorPeers:
-            - Host: peer0.node_japan.thesis.com
+            - Host: peer0.nodejapan.thesis.com
               Port: 7051
     
-    - &node_sing
-        Name: node_singMSP
-        ID: node_singMSP
+    - &nodesing
+        Name: nodesingMSP
+        ID: nodesingMSP
 
-        MSPDir: ../../setup1/node_sing/crypto-config/peerOrganizations/node_sing.thesis.com/msp
+        MSPDir: ../../setup1/node_sing/crypto-config/peerOrganizations/nodesing.thesis.com/msp
 
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('node_singMSP.admin', 'node_singMSP.peer', 'node_singMSP.client')"
+                Rule: "OR('nodesingMSP.admin', 'nodesingMSP.peer', 'nodesingMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('node_singMSP.admin', 'node_singMSP.client')"
+                Rule: "OR('nodesingMSP.admin', 'nodesingMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('node_singMSP.admin')"
+                Rule: "OR('nodesingMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('node_singMSP.peer')"
+                Rule: "OR('nodesingMSP.peer')"
 
         AnchorPeers:
-            - Host: peer0.node_sing.thesis.com
+            - Host: peer0.nodesing.thesis.com
               Port: 7051
     
-    - &node_us
-        Name: node_usMSP
-        ID: node_usMSP
+    - &nodeus
+        Name: nodeusMSP
+        ID: nodeusMSP
 
-        MSPDir: ../../setup1/node_us/crypto-config/peerOrganizations/node_us.thesis.com/msp
+        MSPDir: ../../setup1/node_us/crypto-config/peerOrganizations/nodeus.thesis.com/msp
 
         Policies:
             Readers:
                 Type: Signature
-                Rule: "OR('node_usMSP.admin', 'node_usMSP.peer', 'node_usMSP.client')"
+                Rule: "OR('nodeusMSP.admin', 'nodeusMSP.peer', 'nodeusMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('node_usMSP.admin', 'node_usMSP.client')"
+                Rule: "OR('nodeusMSP.admin', 'nodeusMSP.client')"
             Admins:
                 Type: Signature
-                Rule: "OR('node_usMSP.admin')"
+                Rule: "OR('nodeusMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('node_usMSP.peer')"
+                Rule: "OR('nodeusMSP.peer')"
 
         AnchorPeers:
-            - Host: peer0.node_us.thesis.com
+            - Host: peer0.nodeus.thesis.com
               Port: 7051
 
 Capabilities:
@@ -278,11 +278,11 @@ Profiles:
             Organizations:
                 - *thayson
                 - *cohuong
-                - *node_aus
-                - *node_eu
-                - *node_japan
-                - *node_sing
-                - *node_us
+                - *nodeaus
+                - *nodeeu
+                - *nodejapan
+                - *nodesing
+                - *nodeus
             Capabilities:
                 <<: *ApplicationCapabilities
 
@@ -341,11 +341,11 @@ Profiles:
                 Organizations:
                 - *thayson
                 - *cohuong
-                - *node_aus
-                - *node_eu
-                - *node_japan
-                - *node_sing
-                - *node_us
+                - *nodeaus
+                - *nodeeu
+                - *nodejapan
+                - *nodesing
+                - *nodeus
             ThaySonConsortium:
                 Organizations:
                 - *thayson

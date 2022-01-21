@@ -21,22 +21,10 @@ echo $CHANNEL_NAME
 # Generate System Genesis block
 configtxgen -profile OrdererGenesis -configPath . -channelID $SYS_CHANNEL  -outputBlock ./genesis.block
 
-CHANNEL_THAYSON="channelthayson"
-
-echo $CHANNEL_THAYSON
-
-CHANEL_COHUONG="channelcohuong"
-
-echo $CHANEL_COHUONG
 
 # Generate channel configuration block
 configtxgen -profile BasicChannel -configPath . -outputCreateChannelTx ./mychannel.tx -channelID $CHANNEL_NAME
 
-
-configtxgen -profile ChannelOnlyThaySon -configPath . -outputCreateChannelTx ./channelthayson.tx -channelID $CHANNEL_THAYSON
-
-
-configtxgen -profile ChannelOnlyCoHuong -configPath . -outputCreateChannelTx ./channelcohuong.tx -channelID $CHANEL_COHUONG
 
 echo "#######    Generating anchor peer update for thaysonMSP  ##########"
 configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./thaysonMSPanchors.tx -channelID $CHANNEL_NAME -asOrg thaysonMSP
@@ -45,18 +33,18 @@ echo "#######    Generating anchor peer update for cohuongMSP  ##########"
 configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./cohuongMSPanchors.tx -channelID $CHANNEL_NAME -asOrg cohuongMSP
 
 echo "#######    Generating anchor peer update for node_usMSP  ##########"
-configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./node_usMSPanchors.tx -channelID $CHANNEL_NAME -asOrg node_usMSP
+configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./nodeusMSPanchors.tx -channelID $CHANNEL_NAME -asOrg nodeusMSP
 
 echo "#######    Generating anchor peer update for node_singMSP  ##########"
-configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./node_singMSPanchors.tx -channelID $CHANNEL_NAME -asOrg node_singMSP
+configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./nodesingMSPanchors.tx -channelID $CHANNEL_NAME -asOrg nodesingMSP
 
 echo "#######    Generating anchor peer update for node_japanMSP  ##########"
-configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./node_japanMSPanchors.tx -channelID $CHANNEL_NAME -asOrg node_japanMSP
+configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./nodejapanMSPanchors.tx -channelID $CHANNEL_NAME -asOrg nodejapanMSP
 
 echo "#######    Generating anchor peer update for node_euMSP  ##########"
-configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./node_euMSPanchors.tx -channelID $CHANNEL_NAME -asOrg node_euMSP
+configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./nodeeuMSPanchors.tx -channelID $CHANNEL_NAME -asOrg nodeeuMSP
 
-echo "#######    Generating anchor peer update for node_ausMSP  ##########"
-configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./node_ausMSPanchors.tx -channelID $CHANNEL_NAME -asOrg node_ausMSP
+echo "#######    Generating anchor peer update for nodeausMSP  ##########"
+configtxgen -profile BasicChannel -configPath . -outputAnchorPeersUpdate ./nodeausMSPanchors.tx -channelID $CHANNEL_NAME -asOrg nodeausMSP
 
 

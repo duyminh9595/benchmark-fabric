@@ -1,22 +1,22 @@
 export CORE_PEER_TLS_ENABLED=true
 export ORDERER_CA=${PWD}/../orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/msp/tlscacerts/tlsca.thesis.com-cert.pem
-export PEER0_node_sing_CA=${PWD}/crypto-config/peerOrganizations/node_sing.thesis.com/peers/peer0.node_sing.thesis.com/tls/ca.crt
+export PEER0_nodesing_CA=${PWD}/crypto-config/peerOrganizations/nodesing.thesis.com/peers/peer0.nodesing.thesis.com/tls/ca.crt
 export FABRIC_CFG_PATH=${PWD}/../../artifacts/channel/config/
 
 
 export CHANNEL_NAME=mychannel
 
-setGlobalsForPeer0node_sing() {
-    export CORE_PEER_LOCALMSPID="node_singMSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_node_sing_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/node_sing.thesis.com/users/Admin@node_sing.thesis.com/msp
+setGlobalsForPeer0nodesing() {
+    export CORE_PEER_LOCALMSPID="nodesingMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_nodesing_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/nodesing.thesis.com/users/Admin@nodesing.thesis.com/msp
     export CORE_PEER_ADDRESS=localhost:7051
 }
 
-setGlobalsForPeer1node_sing() {
-    export CORE_PEER_LOCALMSPID="node_singMSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_node_sing_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/node_sing.thesis.com/users/Admin@node_sing.thesis.com/msp
+setGlobalsForPeer1nodesing() {
+    export CORE_PEER_LOCALMSPID="nodesingMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_nodesing_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/nodesing.thesis.com/users/Admin@nodesing.thesis.com/msp
     export CORE_PEER_ADDRESS=localhost:8051
 
 }
@@ -40,36 +40,36 @@ CC_NAME="benchmark_go"
 
 packageChaincode() {
     rm -rf ${CC_NAME}.tar.gz
-    setGlobalsForPeer0node_sing
+    setGlobalsForPeer0nodesing
     peer lifecycle chaincode package ${CC_NAME}.tar.gz \
         --path ${CC_SRC_PATH} --lang ${CC_RUNTIME_LANGUAGE} \
         --label ${CC_NAME}_${VERSION}
-    echo "===================== Chaincode is packaged on peer0.node_sing ===================== "
+    echo "===================== Chaincode is packaged on peer0.nodesing ===================== "
 }
 packageChaincode
 
 installChaincode() {
-    setGlobalsForPeer0node_sing
+    setGlobalsForPeer0nodesing
     peer lifecycle chaincode install ${CC_NAME}.tar.gz
-    echo "===================== Chaincode is installed on peer0.node_sing ===================== "
+    echo "===================== Chaincode is installed on peer0.nodesing ===================== "
 
 }
 
 installChaincode
 
 queryInstalled() {
-    setGlobalsForPeer0node_sing
+    setGlobalsForPeer0nodesing
     peer lifecycle chaincode queryinstalled >&log.txt
     cat log.txt
     PACKAGE_ID=$(sed -n "/${CC_NAME}_${VERSION}/{s/^Package ID: //; s/, Label:.*$//; p;}" log.txt)
     echo PackageID is ${PACKAGE_ID}
-    echo "===================== Query installed successful on peer0.node_sing on channel ===================== "
+    echo "===================== Query installed successful on peer0.nodesing on channel ===================== "
 }
 
 queryInstalled
 
-approveForMynode_sing() {
-    setGlobalsForPeer0node_sing
+approveForMynodesing() {
+    setGlobalsForPeer0nodesing
     # set -x
     # Replace localhost with your orderer's vm IP address
     peer lifecycle chaincode approveformyorg -o localhost:7050 \
@@ -84,10 +84,10 @@ approveForMynode_sing() {
 }
 
 queryInstalled
-approveForMynode_sing
+approveForMynodesing
 
 checkCommitReadyness() {
-    setGlobalsForPeer0node_sing
+    setGlobalsForPeer0nodesing
     peer lifecycle chaincode checkcommitreadiness \
         --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${VERSION} \
         --sequence ${VERSION} --output json --init-required

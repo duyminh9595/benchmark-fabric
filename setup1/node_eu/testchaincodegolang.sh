@@ -1,22 +1,22 @@
 export CORE_PEER_TLS_ENABLED=true
 export ORDERER_CA=${PWD}/../orderer/crypto-config/ordererOrganizations/thesis.com/orderers/orderer.thesis.com/msp/tlscacerts/tlsca.thesis.com-cert.pem
-export PEER0_node_eu_CA=${PWD}/crypto-config/peerOrganizations/node_eu.thesis.com/peers/peer0.node_eu.thesis.com/tls/ca.crt
+export PEER0_nodeeu_CA=${PWD}/crypto-config/peerOrganizations/nodeeu.thesis.com/peers/peer0.nodeeu.thesis.com/tls/ca.crt
 export FABRIC_CFG_PATH=${PWD}/../../artifacts/channel/config/
 
 
 export CHANNEL_NAME=mychannel
 
-setGlobalsForPeer0node_eu() {
-    export CORE_PEER_LOCALMSPID="node_euMSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_node_eu_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/node_eu.thesis.com/users/Admin@node_eu.thesis.com/msp
+setGlobalsForPeer0nodeeu() {
+    export CORE_PEER_LOCALMSPID="nodeeuMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_nodeeu_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/nodeeu.thesis.com/users/Admin@nodeeu.thesis.com/msp
     export CORE_PEER_ADDRESS=localhost:7051
 }
 
-setGlobalsForPeer1node_eu() {
-    export CORE_PEER_LOCALMSPID="node_euMSP"
-    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_node_eu_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/node_eu.thesis.com/users/Admin@node_eu.thesis.com/msp
+setGlobalsForPeer1nodeeu() {
+    export CORE_PEER_LOCALMSPID="nodeeuMSP"
+    export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_nodeeu_CA
+    export CORE_PEER_MSPCONFIGPATH=${PWD}/crypto-config/peerOrganizations/nodeeu.thesis.com/users/Admin@nodeeu.thesis.com/msp
     export CORE_PEER_ADDRESS=localhost:8051
 
 }
@@ -40,36 +40,36 @@ CC_NAME="benchmark_go"
 
 packageChaincode() {
     rm -rf ${CC_NAME}.tar.gz
-    setGlobalsForPeer0node_eu
+    setGlobalsForPeer0nodeeu
     peer lifecycle chaincode package ${CC_NAME}.tar.gz \
         --path ${CC_SRC_PATH} --lang ${CC_RUNTIME_LANGUAGE} \
         --label ${CC_NAME}_${VERSION}
-    echo "===================== Chaincode is packaged on peer0.node_eu ===================== "
+    echo "===================== Chaincode is packaged on peer0.nodeeu ===================== "
 }
 packageChaincode
 
 installChaincode() {
-    setGlobalsForPeer0node_eu
+    setGlobalsForPeer0nodeeu
     peer lifecycle chaincode install ${CC_NAME}.tar.gz
-    echo "===================== Chaincode is installed on peer0.node_eu ===================== "
+    echo "===================== Chaincode is installed on peer0.nodeeu ===================== "
 
 }
 
 installChaincode
 
 queryInstalled() {
-    setGlobalsForPeer0node_eu
+    setGlobalsForPeer0nodeeu
     peer lifecycle chaincode queryinstalled >&log.txt
     cat log.txt
     PACKAGE_ID=$(sed -n "/${CC_NAME}_${VERSION}/{s/^Package ID: //; s/, Label:.*$//; p;}" log.txt)
     echo PackageID is ${PACKAGE_ID}
-    echo "===================== Query installed successful on peer0.node_eu on channel ===================== "
+    echo "===================== Query installed successful on peer0.nodeeu on channel ===================== "
 }
 
 queryInstalled
 
-approveForMynode_eu() {
-    setGlobalsForPeer0node_eu
+approveForMynodeeu() {
+    setGlobalsForPeer0nodeeu
     # set -x
     # Replace localhost with your orderer's vm IP address
     peer lifecycle chaincode approveformyorg -o localhost:7050 \
@@ -84,10 +84,10 @@ approveForMynode_eu() {
 }
 
 queryInstalled
-approveForMynode_eu
+approveForMynodeeu
 
 checkCommitReadyness() {
-    setGlobalsForPeer0node_eu
+    setGlobalsForPeer0nodeeu
     peer lifecycle chaincode checkcommitreadiness \
         --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${VERSION} \
         --sequence ${VERSION} --output json --init-required

@@ -88,6 +88,24 @@ services:
       - ./:/etc/hyperledger/channel/
     networks:
       - thesis
+    extra_hosts:
+      - "orderer.thesis.com:130.211.113.30"
+      - "orderer2.thesis.com:130.211.113.30"
+      - "orderer3.thesis.com:130.211.113.30"
+      - "peer0.thayson.thesis.com:130.211.113.30"
+      - "peer1.thayson.thesis.com:130.211.113.30"
+      - "peer0.cohuong.thesis.com:35.192.101.108"
+      - "peer1.cohuong.thesis.com:35.192.101.108"
+      - "peer0.nodeaus.thesis.com:34.151.86.206"
+      - "peer1.nodeaus.thesis.com:34.151.86.206"
+      - "peer0.nodeeu.thesis.com:34.140.196.82"
+      - "peer1.nodeeu.thesis.com:34.140.196.82"
+      - "peer0.nodejapan.thesis.com:34.85.123.204"
+      - "peer1.nodejapan.thesis.com:34.85.123.204"
+      - "peer0.nodesing.thesis.com:34.87.92.12"
+      - "peer1.nodesing.thesis.com:34.87.92.12"
+      - "peer0.nodeus.thesis.com:34.133.136.255"
+      - "peer1.nodeus.thesis.com:34.133.136.255"
 
 
   peer1.cohuong.thesis.com:
@@ -131,6 +149,24 @@ services:
       - ./:/etc/hyperledger/channel/
     networks:
       - thesis
+    extra_hosts:
+      - "orderer.thesis.com:130.211.113.30"
+      - "orderer2.thesis.com:130.211.113.30"
+      - "orderer3.thesis.com:130.211.113.30"
+      - "peer0.thayson.thesis.com:130.211.113.30"
+      - "peer1.thayson.thesis.com:130.211.113.30"
+      - "peer0.cohuong.thesis.com:35.192.101.108"
+      - "peer1.cohuong.thesis.com:35.192.101.108"
+      - "peer0.nodeaus.thesis.com:34.151.86.206"
+      - "peer1.nodeaus.thesis.com:34.151.86.206"
+      - "peer0.nodeeu.thesis.com:34.140.196.82"
+      - "peer1.nodeeu.thesis.com:34.140.196.82"
+      - "peer0.nodejapan.thesis.com:34.85.123.204"
+      - "peer1.nodejapan.thesis.com:34.85.123.204"
+      - "peer0.nodesing.thesis.com:34.87.92.12"
+      - "peer1.nodesing.thesis.com:34.87.92.12"
+      - "peer0.nodeus.thesis.com:34.133.136.255"
+      - "peer1.nodeus.thesis.com:34.133.136.255"
   
 
 

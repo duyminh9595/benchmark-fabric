@@ -27,23 +27,23 @@ services:
       - 6984:5984
     networks:
       - thesis
-  peer0.node_eu.thesis.com:
-    container_name: peer0.node_eu.thesis.com
+  peer0.nodeeu.thesis.com:
+    container_name: peer0.nodeeu.thesis.com
     extends:
       file: base.yaml
       service: peer-base
     environment:
       # - FABRIC_LOGGING_SPEC=DEBUG
       # - ORDERER_GENERAL_LOGLEVEL=DEBUG
-      - CORE_PEER_LOCALMSPID=node_euMSP
+      - CORE_PEER_LOCALMSPID=nodeeuMSP
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_thesis
-      - CORE_PEER_ID=peer0.node_eu.thesis.com
-      - CORE_PEER_ADDRESS=peer0.node_eu.thesis.com:7051
+      - CORE_PEER_ID=peer0.nodeeu.thesis.com
+      - CORE_PEER_ADDRESS=peer0.nodeeu.thesis.com:7051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
-      - CORE_PEER_CHAINCODEADDRESS=peer0.node_eu.thesis.com:7052
+      - CORE_PEER_CHAINCODEADDRESS=peer0.nodeeu.thesis.com:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.node_eu.thesis.com:8051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.node_eu.thesis.com:7051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer1.nodeeu.thesis.com:8051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.nodeeu.thesis.com:7051
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb0:5984
       - CORE_LEDGER_STATE_COUCHDBCONFIG_USERNAME=
@@ -59,35 +59,53 @@ services:
     ports:
       - 7051:7051
     volumes:
-      - ./crypto-config/peerOrganizations/node_eu.thesis.com/peers/peer0.node_eu.thesis.com/msp:/etc/hyperledger/crypto/peer/msp
-      - ./crypto-config/peerOrganizations/node_eu.thesis.com/peers/peer0.node_eu.thesis.com/tls:/etc/hyperledger/crypto/peer/tls
+      - ./crypto-config/peerOrganizations/nodeeu.thesis.com/peers/peer0.nodeeu.thesis.com/msp:/etc/hyperledger/crypto/peer/msp
+      - ./crypto-config/peerOrganizations/nodeeu.thesis.com/peers/peer0.nodeeu.thesis.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
       - ./:/etc/hyperledger/channel/
     networks:
       - thesis
+    extra_hosts:
+      - "orderer.thesis.com:130.211.113.30"
+      - "orderer2.thesis.com:130.211.113.30"
+      - "orderer3.thesis.com:130.211.113.30"
+      - "peer0.thayson.thesis.com:130.211.113.30"
+      - "peer1.thayson.thesis.com:130.211.113.30"
+      - "peer0.cohuong.thesis.com:35.192.101.108"
+      - "peer1.cohuong.thesis.com:35.192.101.108"
+      - "peer0.nodeaus.thesis.com:34.151.86.206"
+      - "peer1.nodeaus.thesis.com:34.151.86.206"
+      - "peer0.nodeeu.thesis.com:34.140.196.82"
+      - "peer1.nodeeu.thesis.com:34.140.196.82"
+      - "peer0.nodejapan.thesis.com:34.85.123.204"
+      - "peer1.nodejapan.thesis.com:34.85.123.204"
+      - "peer0.nodesing.thesis.com:34.87.92.12"
+      - "peer1.nodesing.thesis.com:34.87.92.12"
+      - "peer0.nodeus.thesis.com:34.133.136.255"
+      - "peer1.nodeus.thesis.com:34.133.136.255"
 
 
 
-  peer1.node_eu.thesis.com:
-    container_name: peer1.node_eu.thesis.com
+  peer1.nodeeu.thesis.com:
+    container_name: peer1.nodeeu.thesis.com
     extends:
       file: base.yaml
       service: peer-base
     environment:
       - FABRIC_LOGGING_SPEC=DEBUG
       - ORDERER_GENERAL_LOGLEVEL=debug
-      - CORE_PEER_LOCALMSPID=node_euMSP
+      - CORE_PEER_LOCALMSPID=nodeeuMSP
 
       - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=artifacts_thesis
 
-      - CORE_PEER_ID=peer1.node_eu.thesis.com
-      - CORE_PEER_ADDRESS=peer1.node_eu.thesis.com:8051
+      - CORE_PEER_ID=peer1.nodeeu.thesis.com
+      - CORE_PEER_ADDRESS=peer1.nodeeu.thesis.com:8051
       - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
-      - CORE_PEER_CHAINCODEADDRESS=peer1.node_eu.thesis.com:8052
+      - CORE_PEER_CHAINCODEADDRESS=peer1.nodeeu.thesis.com:8052
       - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
       # Exposed for discovery Service
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.node_eu.thesis.com:8051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.node_eu.thesis.com:7051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer1.nodeeu.thesis.com:8051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.nodeeu.thesis.com:7051
 
       - CORE_LEDGER_STATE_STATEDATABASE=CouchDB
       - CORE_LEDGER_STATE_COUCHDBCONFIG_COUCHDBADDRESS=couchdb1:5984
@@ -103,13 +121,31 @@ services:
     ports:
       - 8051:8051
     volumes:
-      - ./crypto-config/peerOrganizations/node_eu.thesis.com/peers/peer1.node_eu.thesis.com/msp:/etc/hyperledger/crypto/peer/msp
-      - ./crypto-config/peerOrganizations/node_eu.thesis.com/peers/peer1.node_eu.thesis.com/tls:/etc/hyperledger/crypto/peer/tls
+      - ./crypto-config/peerOrganizations/nodeeu.thesis.com/peers/peer1.nodeeu.thesis.com/msp:/etc/hyperledger/crypto/peer/msp
+      - ./crypto-config/peerOrganizations/nodeeu.thesis.com/peers/peer1.nodeeu.thesis.com/tls:/etc/hyperledger/crypto/peer/tls
       - /var/run/:/host/var/run/
       - ./:/etc/hyperledger/channel/
     depends_on:
       - couchdb1
     networks:
       - thesis
+    extra_hosts:
+      - "orderer.thesis.com:130.211.113.30"
+      - "orderer2.thesis.com:130.211.113.30"
+      - "orderer3.thesis.com:130.211.113.30"
+      - "peer0.thayson.thesis.com:130.211.113.30"
+      - "peer1.thayson.thesis.com:130.211.113.30"
+      - "peer0.cohuong.thesis.com:35.192.101.108"
+      - "peer1.cohuong.thesis.com:35.192.101.108"
+      - "peer0.nodeaus.thesis.com:34.151.86.206"
+      - "peer1.nodeaus.thesis.com:34.151.86.206"
+      - "peer0.nodeeu.thesis.com:34.140.196.82"
+      - "peer1.nodeeu.thesis.com:34.140.196.82"
+      - "peer0.nodejapan.thesis.com:34.85.123.204"
+      - "peer1.nodejapan.thesis.com:34.85.123.204"
+      - "peer0.nodesing.thesis.com:34.87.92.12"
+      - "peer1.nodesing.thesis.com:34.87.92.12"
+      - "peer0.nodeus.thesis.com:34.133.136.255"
+      - "peer1.nodeus.thesis.com:34.133.136.255"
 
 

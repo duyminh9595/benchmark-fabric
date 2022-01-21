@@ -42,3 +42,65 @@ PeerOrgs:
 
     Users:
       Count: 1
+  
+
+  - Name: nodeaus
+    Domain: nodeaus.thesis.com
+    EnableNodeOUs: true
+
+    Template:
+      Count: 2
+      SANS:
+        - "localhost"
+
+    Users:
+      Count: 1
+
+  - Name: nodeeu
+    Domain: nodeeu.thesis.com
+    EnableNodeOUs: true
+
+    Template:
+      Count: 2
+      SANS:
+        - "localhost"
+
+    Users:
+      Count: 1
+  
+  - Name: nodejapan
+    Domain: nodejapan.thesis.com
+    EnableNodeOUs: true
+
+    Template:
+      Count: 2
+      SANS:
+        - "localhost"
+
+    Users:
+      Count: 1
+  
+
+  - Name: nodesing
+    Domain: nodesing.thesis.com
+    EnableNodeOUs: true
+
+    Template:
+      Count: 2
+      SANS:
+        - "localhost"
+
+    Users:
+      Count: 1
+  
+  - Name: nodeus
+    Domain: nodeus.thesis.com
+    EnableNodeOUs: true
+
+    Template:
+      Count: 2
+      SANS:
+        - "localhost"
+
+    Users:
+      Count: 1
