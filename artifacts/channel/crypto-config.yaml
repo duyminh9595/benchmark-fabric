@@ -19,8 +19,8 @@ OrdererOrgs:
             - "127.0.0.1"
 
 PeerOrgs:
-  - Name: thayson
-    Domain: thayson.thesis.com
+  - Name: Org1
+    Domain: org1.thesis.com
     EnableNodeOUs: true
 
     Template:
@@ -31,21 +31,8 @@ PeerOrgs:
     Users:
       Count: 1
 
-  - Name: cohuong
-    Domain: cohuong.thesis.com
-    EnableNodeOUs: true
-
-    Template:
-      Count: 2
-      SANS:
-        - "localhost"
-
-    Users:
-      Count: 1
-  
-
-  - Name: nodeaus
-    Domain: nodeaus.thesis.com
+  - Name: Org2
+    Domain: org2.thesis.com
     EnableNodeOUs: true
 
     Template:
@@ -56,45 +43,8 @@ PeerOrgs:
     Users:
       Count: 1
 
-  - Name: nodeeu
-    Domain: nodeeu.thesis.com
-    EnableNodeOUs: true
-
-    Template:
-      Count: 2
-      SANS:
-        - "localhost"
-
-    Users:
-      Count: 1
-  
-  - Name: nodejapan
-    Domain: nodejapan.thesis.com
-    EnableNodeOUs: true
-
-    Template:
-      Count: 2
-      SANS:
-        - "localhost"
-
-    Users:
-      Count: 1
-  
-
-  - Name: nodesing
-    Domain: nodesing.thesis.com
-    EnableNodeOUs: true
-
-    Template:
-      Count: 2
-      SANS:
-        - "localhost"
-
-    Users:
-      Count: 1
-  
-  - Name: nodeus
-    Domain: nodeus.thesis.com
+  - Name: Org3
+    Domain: org3.thesis.com
     EnableNodeOUs: true
 
     Template:
