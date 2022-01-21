@@ -21,20 +21,12 @@ setGlobalsForPeer1Org2() {
 
 }
 
-presetup() {
-    echo Vendoring Go dependencies ...
-    pushd ./../../artifacts/src/github.com/fabcar/go
-    GO111MODULE=on go mod vendor
-    popd
-    echo Finished vendoring Go dependencies
-}
-# presetup
-
 CHANNEL_NAME="mychannel"
-CC_RUNTIME_LANGUAGE="golang"
+CC_RUNTIME_LANGUAGE="node"
 VERSION="1"
-CC_SRC_PATH="./../../artifacts/src/github.com/fabcar/go"
-CC_NAME="fabcar"
+CC_SRC_PATH="./../../artifacts/src/chaincodeonthayson"
+CC_NAME="benchmark_nodejs"
+
 
 packageChaincode() {
     rm -rf ${CC_NAME}.tar.gz
@@ -42,53 +34,55 @@ packageChaincode() {
     peer lifecycle chaincode package ${CC_NAME}.tar.gz \
         --path ${CC_SRC_PATH} --lang ${CC_RUNTIME_LANGUAGE} \
         --label ${CC_NAME}_${VERSION}
-    echo "===================== Chaincode is packaged on peer0.org2 ===================== "
+    echo "===================== Chaincode is packaged on peer0.nodeus ===================== "
 }
-# packageChaincode
+packageChaincode
 
 installChaincode() {
     setGlobalsForPeer0Org2
     peer lifecycle chaincode install ${CC_NAME}.tar.gz
-    echo "===================== Chaincode is installed on peer0.org2 ===================== "
+    echo "===================== Chaincode is installed on peer0.nodeus ===================== "
 
 }
 
-# installChaincode
+installChaincode
 
 queryInstalled() {
     setGlobalsForPeer0Org2
     peer lifecycle chaincode queryinstalled >&log.txt
-
     cat log.txt
     PACKAGE_ID=$(sed -n "/${CC_NAME}_${VERSION}/{s/^Package ID: //; s/, Label:.*$//; p;}" log.txt)
     echo PackageID is ${PACKAGE_ID}
-    echo "===================== Query installed successful on peer0.org2 on channel ===================== "
+    echo "===================== Query installed successful on peer0.nodeus on channel ===================== "
 }
 
-# queryInstalled
+queryInstalled
 
-approveForMyOrg2() {
+approveForMynodeus() {
     setGlobalsForPeer0Org2
-
+    # set -x
     # Replace localhost with your orderer's vm IP address
-    peer lifecycle chaincode approveformyorg -o localhost:7050 \
-        --ordererTLSHostnameOverride orderer.example.com --tls $CORE_PEER_TLS_ENABLED \
-        --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} \
-        --version ${VERSION} --init-required --package-id ${PACKAGE_ID} \
+    peer lifecycle chaincode approveformyorg -o 34.151.86.206:7050 \
+        --ordererTLSHostnameOverride orderer.thesis.com --tls \
+        --cafile $ORDERER_CA --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${VERSION} \
+        --init-required --package-id ${PACKAGE_ID} \
         --sequence ${VERSION}
+    # set +x
 
-    echo "===================== chaincode approved from org 2 ===================== "
+    echo "===================== chaincode approved from org 1 ===================== "
+
 }
-# queryInstalled
-# approveForMyOrg2
+
+queryInstalled
+approveForMynodeus
 
 checkCommitReadyness() {
-
     setGlobalsForPeer0Org2
-    peer lifecycle chaincode checkcommitreadiness --channelID $CHANNEL_NAME \
-        --peerAddresses localhost:9051 --tlsRootCertFiles $PEER0_ORG2_CA \
-        --name ${CC_NAME} --version ${VERSION} --sequence ${VERSION} --output json --init-required
+    peer lifecycle chaincode checkcommitreadiness \
+        --channelID $CHANNEL_NAME --name ${CC_NAME} --version ${VERSION} \
+        --sequence ${VERSION} --output json --init-required
     echo "===================== checking commit readyness from org 1 ===================== "
 }
 
-# checkCommitReadyness
+checkCommitReadyness
+
